@@ -21,7 +21,7 @@ public class GoalManager : MonoBehaviour
         {
             if (objectList.Count == 0) break;
 
-            int randomIndex = Random.Range(0, numOfObjToMod);
+            int randomIndex = Random.Range(0, objectList.Count);
             selectedGoals.Add(objectList[randomIndex]);
             objectList.RemoveAt(randomIndex);
         }
