@@ -1,10 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PossibleGoal : MonoBehaviour
 {
-    public GameObject targetObject;
-    private PlayerMovement targetScript;
+    public GameObject playerObject;
+    private PlayerMovement playerScript;
     
     public void Modify()
     {
@@ -17,8 +16,8 @@ public class PossibleGoal : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && GetComponent<SpriteRenderer>().color == Color.white)
         {
             Debug.Log("Win!");
-            targetScript = targetObject.GetComponent<PlayerMovement>();
-            targetScript.ResetObject();
+            playerScript = playerObject.GetComponent<PlayerMovement>();
+            playerScript.ResetObject();
         }
         else if (collision.gameObject.CompareTag("Player") && GetComponent<SpriteRenderer>().color == Color.red)
         {
