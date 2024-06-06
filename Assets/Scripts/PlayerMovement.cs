@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5.0f;
     private bool falling = false;
     private Rigidbody2D rb;
+    private Vector2 initialPosition
     void Start()
     {
         initialPosition = transform.position;
@@ -21,14 +22,11 @@ public class PlayerMovement : MonoBehaviour
             // get user left - right input
             float horizontalInput = Input.GetAxis("Horizontal");
     
-            // get the current position
-            Vector2 currentPosition = transform.position;
-    
             // calculate new position
-            Vector2 newPosition = currentPosition + new Vector2(horizontalInput * speed * Time.deltaTime, 0);
+            Vector2 newPosition = new Vector2(horizontalInput * speed * Time.deltaTime, 0);
     
             // transform to new position
-            transform.position = newPosition;
+            transform.Translate(newPosition);
         }
         if (Input.GetKeyDown("Space"))
         {
