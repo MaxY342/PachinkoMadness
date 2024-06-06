@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     void Start()
     {
+        initialPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
     }
@@ -34,5 +35,11 @@ public class PlayerMovement : MonoBehaviour
             falling = true;
             rb.gravityScale = 1;
         }
+    }
+    public void ResetObject()
+    {
+        transform.position = initialPosition;
+        falling = false;
+        rb.gravityScale = 0;
     }
 }
