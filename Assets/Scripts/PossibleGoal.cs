@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class PossibleGoal : MonoBehaviour
 {
-    public gameObject targetObject;
+    public GameObject targetObject;
+    private PlayerMovement targetScript;
     
     public void Modify()
     {
@@ -16,9 +17,8 @@ public class PossibleGoal : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && GetComponent<SpriteRenderer>().color == Color.white)
         {
             Debug.Log("Win!");
-            PlayerMovement targetScript = targetObject.GetComponent<PlayerMovement>();
-            targetObject.transform.position = new Vector2(0, 0);
-            targetScript.falling = false;
+            targetScript = targetObject.GetComponent<PlayerMovement>();
+            targetScript.ResetObject();
         }
         else if (collision.gameObject.CompareTag("Player") && GetComponent<SpriteRenderer>().color == Color.red)
         {
