@@ -8,10 +8,12 @@ public class PlayerMovement : MonoBehaviour
     private bool falling = false;
     private Rigidbody2D rb;
     private Vector2 initialPosition;
+    private Quaternion initialRotation;
 
     void Start()
     {
         initialPosition = transform.position;
+        initialRotation = transform.rotation;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
     }
@@ -41,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Reset position
         transform.position = initialPosition;
+        transform.rotation = initialRotation;
 
         // Reset falling status
         falling = false;
