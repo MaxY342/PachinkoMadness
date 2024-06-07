@@ -33,7 +33,12 @@ public class GoalManager : MonoBehaviour
         // modify the selected goals
         foreach (PossibleGoal goal in selectedGoals)
         {
-            goal.Modify();
+            goal.MakeSafe();
+        }
+
+        foreach (PossibleGoal goal in ObjectList)
+        {
+            goal.MakeDanger();
         }
     }
 
