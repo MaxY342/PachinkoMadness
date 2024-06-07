@@ -29,7 +29,7 @@ public class PossibleGoal : MonoBehaviour
         {
             playerScript = playerObject.GetComponent<PlayerMovement>();
             scoreScript = scoreManager.GetComponent<ScoreManager>();
-            comboScript = comboManager.GetComponent<ComboManger>();
+            comboScript = comboManager.GetComponent<ComboManager>();
             if (GetComponent<SpriteRenderer>().color == Color.white)
             {
                 playerScript.ResetObject();
