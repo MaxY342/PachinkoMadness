@@ -8,10 +8,16 @@ public class PossibleGoal : MonoBehaviour
     private ScoreManager scoreScript;
     public int scoreValue = 1;
     
-    public void Modify()
+    public void MakeGoal()
     {
         // change object colour to white
         GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    public void MakeDanger()
+    {
+        // change object colour to red
+        GetComponent<SpriteRenderer>().color = Color.red;
     }
     
     void OnCollisionEnter2D(Collision2D collision)
