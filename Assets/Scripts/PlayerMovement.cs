@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Stop any existing movement
         rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f;
         rb.gravityScale = 0;
     }
 }
