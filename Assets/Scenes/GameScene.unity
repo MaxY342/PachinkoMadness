@@ -548,6 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659a722432a6a2f4fac8d2af3d572c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 1778370770}
 --- !u!50 &215366420
 Rigidbody2D:
   serializedVersion: 4
@@ -709,6 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659a722432a6a2f4fac8d2af3d572c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 1778370770}
 --- !u!50 &389312113
 Rigidbody2D:
   serializedVersion: 4
@@ -1800,6 +1802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659a722432a6a2f4fac8d2af3d572c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 1778370770}
 --- !u!50 &955435808
 Rigidbody2D:
   serializedVersion: 4
@@ -1961,6 +1964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659a722432a6a2f4fac8d2af3d572c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 1778370770}
 --- !u!50 &1066862081
 Rigidbody2D:
   serializedVersion: 4
@@ -3176,6 +3180,7 @@ GameObject:
   - component: {fileID: 1778370773}
   - component: {fileID: 1778370772}
   - component: {fileID: 1778370771}
+  - component: {fileID: 1778370775}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3312,6 +3317,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1778370775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778370770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a775892a722740448625e5522a84d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &1821073184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3411,6 +3429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659a722432a6a2f4fac8d2af3d572c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 1778370770}
 --- !u!50 &1821073188
 Rigidbody2D:
   serializedVersion: 4
@@ -4080,6 +4099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659a722432a6a2f4fac8d2af3d572c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 1778370770}
 --- !u!50 &2076972713
 Rigidbody2D:
   serializedVersion: 4
