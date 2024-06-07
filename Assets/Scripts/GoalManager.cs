@@ -8,7 +8,7 @@ public class GoalManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SelectAndModifyGoals()
+        SelectAndModifyGoals();
     }
     public void SelectAndModifyGoals()
     {
@@ -36,7 +36,7 @@ public class GoalManager : MonoBehaviour
             goal.MakeGoal();
         }
 
-        foreach (PossibleGoal goal in ObjectList)
+        foreach (PossibleGoal goal in objectList)
         {
             goal.MakeDanger();
         }
