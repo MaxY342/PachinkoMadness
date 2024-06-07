@@ -56,7 +56,7 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "2D Test.sln",
+    "dotnet.defaultSolution": "PachinkoMadness.sln",
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#000000",
         "activityBar.background": "#000000",

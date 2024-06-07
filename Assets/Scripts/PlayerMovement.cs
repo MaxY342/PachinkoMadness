@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5.0f;
     private bool falling = false;
     private Rigidbody2D rb;
-    private Vector2 initialPosition
+    private Vector2 initialPosition;
     void Start()
     {
         initialPosition = transform.position;
