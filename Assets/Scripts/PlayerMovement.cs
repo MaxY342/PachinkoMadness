@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
             // transform to new position
             transform.Translate(newPosition);
         }
-        if (Input.GetKeyDown("Space"))
+        if (Input.GetKeyDown("space"))
         {
             falling = true;
             rb.gravityScale = 1;
