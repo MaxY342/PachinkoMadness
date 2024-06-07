@@ -6,21 +6,8 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager instance;
     public TextMeshProUGUI scoreText;
     private int score;
-    void Awake()
-    {
-        // Ensure there is only one instance of the ScoreManager
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
     // Start is called before the first frame update
     void Start()
     {
