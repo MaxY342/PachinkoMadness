@@ -11,8 +11,7 @@ public class ComboManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        combo = 0;
-        UpdateComboText();
+        ResetCombo();
     }
 
     // Update is called once per frame
@@ -20,7 +19,7 @@ public class ComboManager : MonoBehaviour
     {
         
     }
-    public void AddScore(int comboValue)
+    public void AddCombo(int comboValue)
     {
         combo += comboValue;
         Debug.Log("Combo added: " + comboValue);
@@ -29,5 +28,10 @@ public class ComboManager : MonoBehaviour
     private void UpdateComboText()
     {
         comboText.text = "Combo: " + combo;
+    }
+    public void ResetCombo()
+    {
+        combo = 0;
+        UpdateComboText();
     }
 }
