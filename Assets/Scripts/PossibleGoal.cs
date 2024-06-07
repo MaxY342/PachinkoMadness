@@ -10,6 +10,48 @@ public class PossibleGoal : MonoBehaviour
     public GameObject comboManager;
     private ComboManager comboScript;
     public int comboValue = 1;
+
+    void Start()
+    {
+        if (playerObject != null)
+        {
+            playerScript = playerObject.GetComponent<PlayerMovement>();
+            if (playerScript == null)
+            {
+                Debug.LogError("PlayerMovement script not found on playerObject!");
+            }
+        }
+        else
+        {
+            Debug.LogError("playerObject not assigned in the Inspector!");
+        }
+
+        if (scoreManager != null)
+        {
+            scoreScript = scoreManager.GetComponent<ScoreManager>();
+            if (scoreScript == null)
+            {
+                Debug.LogError("ScoreManager script not found on scoreManager object!");
+            }
+        }
+        else
+        {
+            Debug.LogError("scoreManager not assigned in the Inspector!");
+        }
+
+        if (comboManager != null)
+        {
+            comboScript = comboManager.GetComponent<ComboManager>();
+            if (comboScript == null)
+            {
+                Debug.LogError("ComboManager script not found on comboManager object!");
+            }
+        }
+        else
+        {
+            Debug.LogError("comboManager not assigned in the Inspector!");
+        }
+    }
     
     public void MakeGoal()
     {
@@ -27,9 +69,6 @@ public class PossibleGoal : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            playerScript = playerObject.GetComponent<PlayerMovement>();
-            scoreScript = scoreManager.GetComponent<ScoreManager>();
-            comboScript = comboManager.GetComponent<ComboManager>();
             if (GetComponent<SpriteRenderer>().color == Color.white)
             {
                 playerScript.ResetObject();
