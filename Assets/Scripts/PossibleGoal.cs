@@ -7,6 +7,9 @@ public class PossibleGoal : MonoBehaviour
     public GameObject scoreManager;
     private ScoreManager scoreScript;
     public int scoreValue = 1;
+    public GameObject comboManager;
+    private ComboManager comboScript;
+    public int comboValue = 1;
     
     public void MakeGoal()
     {
@@ -26,10 +29,12 @@ public class PossibleGoal : MonoBehaviour
         {
             playerScript = playerObject.GetComponent<PlayerMovement>();
             scoreScript = scoreManager.GetComponent<ScoreManager>();
+            comboScript = comboManager.GetComponent<ComboManger>();
             if (GetComponent<SpriteRenderer>().color == Color.white)
             {
                 playerScript.ResetObject();
                 scoreScript.AddScore(scoreValue);
+                comboScript.AddCombo(comboValue);
                 Debug.Log("Win!");
             }
             else if (GetComponent<SpriteRenderer>().color == Color.red)
