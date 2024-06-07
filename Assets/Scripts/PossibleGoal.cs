@@ -4,6 +4,7 @@ public class PossibleGoal : MonoBehaviour
 {
     public GameObject playerObject;
     private PlayerMovement playerScript;
+    public int scoreValue = 1;
     
     public void Modify()
     {
@@ -19,6 +20,7 @@ public class PossibleGoal : MonoBehaviour
             if (GetComponent<SpriteRenderer>().color == Color.white)
             {
                 playerScript.ResetObject();
+                ScoreManager.instance.AddScore(scoreValue);
                 Debug.Log("Win!");
             }
             else if (GetComponent<SpriteRenderer>().color == Color.red)
