@@ -10,6 +10,7 @@ public class PossibleGoal : MonoBehaviour
     public GameObject comboManager;
     private ComboManager comboScript;
     public int comboValue = 1;
+    private int deathCounter = 0;
 
     void Start()
     {
@@ -52,7 +53,14 @@ public class PossibleGoal : MonoBehaviour
             Debug.LogError("comboManager not assigned in the Inspector!");
         }
     }
-    
+
+    void Update()
+    {
+        if (deathCounter == 2)
+        {
+            
+        }
+    }
     public void MakeGoal()
     {
         // change object colour to white
@@ -80,6 +88,7 @@ public class PossibleGoal : MonoBehaviour
             {
                 comboScript.ResetCombo();
                 Debug.Log("Lose!");
+                deathCounter++;
             }
         }
     }
