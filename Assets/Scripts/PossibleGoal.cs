@@ -13,15 +13,18 @@ public class PossibleGoal : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && GetComponent<SpriteRenderer>().color == Color.white)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Win!");
             playerScript = playerObject.GetComponent<PlayerMovement>();
-            playerScript.ResetObject();
-        }
-        else if (collision.gameObject.CompareTag("Player") && GetComponent<SpriteRenderer>().color == Color.red)
-        {
-            Debug.Log("Lose!");
+            if (GetComponent<SpriteRenderer>().color == Color.white)
+            {
+                playerScript.ResetObject();
+                Debug.Log("Win!");
+            }
+            else if (GetComponent<SpriteRenderer>().color == Color.red)
+            {
+                Debug.Log("Lose!");
+            }
         }
     }
 }
