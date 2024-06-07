@@ -8,6 +8,10 @@ public class GoalManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SelectAndModifyGoals()
+    }
+    public void SelectAndModifyGoals()
+    {
         // find all objects with the PossibleGoal component
         PossibleGoal[] allObjects = FindObjectsOfType<PossibleGoal>();
 
