@@ -39,6 +39,7 @@ public class PossibleGoal : MonoBehaviour
             }
             else if (GetComponent<SpriteRenderer>().color == Color.red)
             {
+                comboScript.ResetCombo();
                 Debug.Log("Lose!");
             }
         }
