@@ -10,6 +10,8 @@ public class PossibleGoal : MonoBehaviour
     public GameObject comboManager;
     private ComboManager comboScript;
     public int comboValue = 1;
+    public GameObject goalManager;
+    private GoalManager goalScript;
     private int deathCounter = 0;
 
     void Start()
@@ -52,6 +54,19 @@ public class PossibleGoal : MonoBehaviour
         {
             Debug.LogError("comboManager not assigned in the Inspector!");
         }
+        
+        if (goalManager != null)
+        {
+            goalScript = goalManager.GetComponent<GoalManager>();
+            if (goalScript == null)
+            {
+                Debug.LogError("goalManager script not found on comboManager object!");
+            }
+        }
+        else
+        {
+            Debug.LogError("goalManager not assigned in the Inspector!");
+        }
     }
 
     void Update()
@@ -82,6 +97,7 @@ public class PossibleGoal : MonoBehaviour
                 playerScript.ResetObject();
                 scoreScript.AddScore(scoreValue);
                 comboScript.AddCombo(comboValue);
+                goalScript.SelectAndModifyGoals();
                 Debug.Log("Win!");
             }
             else if (GetComponent<SpriteRenderer>().color == Color.red)
