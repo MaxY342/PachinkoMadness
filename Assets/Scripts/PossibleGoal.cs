@@ -12,6 +12,8 @@ public class PossibleGoal : MonoBehaviour
     public int comboValue = 1;
     public GameObject goalManager;
     private GoalManager goalScript;
+    public GameObject healthManager;
+    private HealthManager healthScript;
     private int deathCounter = 0;
 
     void Start()
@@ -60,12 +62,25 @@ public class PossibleGoal : MonoBehaviour
             goalScript = goalManager.GetComponent<GoalManager>();
             if (goalScript == null)
             {
-                Debug.LogError("goalManager script not found on comboManager object!");
+                Debug.LogError("GoalManager script not found on comboManager object!");
             }
         }
         else
         {
             Debug.LogError("goalManager not assigned in the Inspector!");
+        }
+
+        if (healthManager != null)
+        {
+            healthScript = healthManager.GetComponent<HealthManager>();
+            if (healthScript == null)
+            {
+                Debug.LogError("HealthManager Script not found on healthManager object!");
+            }
+        }
+        else
+        {
+            Debug.LogError("healthManager not assigned in the Inspector!");
         }
     }
 
@@ -76,6 +91,7 @@ public class PossibleGoal : MonoBehaviour
             
         }
     }
+
     public void MakeGoal()
     {
         // change object colour to white
@@ -105,6 +121,7 @@ public class PossibleGoal : MonoBehaviour
                 comboScript.ResetCombo();
                 Debug.Log("Lose!");
                 deathCounter++;
+                healthScript.RemoveHeart();
             }
         }
     }
