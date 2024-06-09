@@ -47,4 +47,25 @@ public class HealthManager : MonoBehaviour
             child.gameObject.SetActive(true);
         }
     }
+
+    public void AddHeart()
+    {
+        float distance = float.PositiveInfinity;
+        Transform toBeAdded = null;
+
+        foreach (Transform child in children)
+        {
+            if (child.position.x < distance)
+            {
+                toBeAdded = child;
+                distance = child.position.x;
+            }
+        }
+
+        if (toBeAdded != null)
+        {
+            toBeAdded.gameObject.SetActive(true);
+            children.Add(toBeAdded);
+        }
+    }
 }
