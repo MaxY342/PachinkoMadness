@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class ComboManager : MonoBehaviour
@@ -42,6 +44,25 @@ public class ComboManager : MonoBehaviour
         combo = 0;
         UpdateComboText();
         HideFlame();
+    }
+
+    public int Increment()
+    {
+        int multiplier = 0;
+        float positiveInf = float.PositiveInfinity;
+        for (int i = 0; i < positiveInf; i += 5)
+        {
+            if (combo < i)
+            {
+                multiplier = i - 5;
+                break;
+            }
+        }
+        if (multiplier > 0)
+        {
+            multiplier /= 5;
+        }
+        return multiplier;
     }
 
     private void ShowFlame()

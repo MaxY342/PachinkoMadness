@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 
 public class PossibleGoal : MonoBehaviour
@@ -8,6 +9,7 @@ public class PossibleGoal : MonoBehaviour
     public GameObject scoreManager;
     private ScoreManager scoreScript;
     public int scoreValue = 1;
+    private int initialScoreValue;
     public GameObject comboManager;
     private ComboManager comboScript;
     public int comboValue = 1;
@@ -18,6 +20,7 @@ public class PossibleGoal : MonoBehaviour
 
     void Start()
     {
+        initialScoreValue = scoreValue;
         if (playerObject != null)
         {
             playerScript = playerObject.GetComponent<PlayerMovement>();
@@ -107,6 +110,7 @@ public class PossibleGoal : MonoBehaviour
         {
             if (GetComponent<SpriteRenderer>().color == Color.white)
             {
+                scoreValue = initialScoreValue + comboScript.Increment();
                 playerScript.ResetObject();
                 scoreScript.AddScore(scoreValue);
                 comboScript.AddCombo(comboValue);
