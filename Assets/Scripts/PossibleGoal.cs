@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PossibleGoal : MonoBehaviour
 {
@@ -14,7 +15,6 @@ public class PossibleGoal : MonoBehaviour
     private GoalManager goalScript;
     public GameObject healthManager;
     private HealthManager healthScript;
-    private int deathCounter = 0;
 
     void Start()
     {
@@ -86,10 +86,7 @@ public class PossibleGoal : MonoBehaviour
 
     void Update()
     {
-        if (deathCounter == 2)
-        {
-            
-        }
+
     }
 
     public void MakeGoal()
@@ -118,10 +115,14 @@ public class PossibleGoal : MonoBehaviour
             }
             else if (GetComponent<SpriteRenderer>().color == Color.red)
             {
-                comboScript.ResetCombo();
-                Debug.Log("Lose!");
-                deathCounter++;
                 healthScript.RemoveHeart();
+                if (healthScript.DeathCheck())
+                {
+                    SceneManager.LoadScene("IntroScene");
+                }
+                comboScript.ResetCombo();
+                playerScript.ResetObject();
+                Debug.Log("Lose!");
             }
         }
     }

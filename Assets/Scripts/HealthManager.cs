@@ -68,4 +68,9 @@ public class HealthManager : MonoBehaviour
             children.Add(toBeAdded);
         }
     }
+
+    public bool DeathCheck()
+    {
+        return children.Count == 0;
+    }
 }
