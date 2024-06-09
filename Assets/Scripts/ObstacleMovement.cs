@@ -36,7 +36,7 @@ public class ObstacleMovement : MonoBehaviour
         else
         {
             transform.position = currentPosition + new Vector2(-speed * Time.deltaTime, 0);
-            if (currentPosition.x < initialPosition + 0.4f && Random.value < switchProb)
+            if (currentPosition.x < initialPosition - 0.4f && Random.value < switchProb)
             {
                 switchProb = 0.0001f;
                 movingRight = true;
