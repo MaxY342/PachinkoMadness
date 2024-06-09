@@ -11,8 +11,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
-        UpdateScoreText();
+        ResetScore();
     }
 
     // Update is called once per frame
@@ -29,5 +28,11 @@ public class ScoreManager : MonoBehaviour
     private void UpdateScoreText()
     {
         scoreText.text = "Score: " + score;
+    }
+
+    public void ResetScore()
+    {
+        score = 0;
+        UpdateScoreText();
     }
 }
