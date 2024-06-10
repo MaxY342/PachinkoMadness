@@ -122,7 +122,7 @@ public class PossibleGoal : MonoBehaviour
                 healthScript.RemoveHeart();
                 if (healthScript.DeathCheck())
                 {
-                    SceneManager.LoadScene("IntroScene");
+                    SceneManager.LoadScene("DeathScene");
                 }
                 comboScript.ResetCombo();
                 playerScript.ResetObject();
