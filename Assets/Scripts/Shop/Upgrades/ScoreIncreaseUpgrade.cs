@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreIncrease : MonoBehaviour
+public class ScoreIncreaseUpgrade : MonoBehaviour
 {
     private int increaseRate = 1;
 
