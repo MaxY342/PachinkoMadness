@@ -20,7 +20,9 @@ public class DeathScreenManager : Monobehaviour
     {
         deathScreen.SetActive(true);
 
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(displayTime);
+
+        deathScreen.SetActive(false);
         
     }
 }
