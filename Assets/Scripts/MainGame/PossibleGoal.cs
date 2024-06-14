@@ -8,7 +8,12 @@ public class PossibleGoal : MonoBehaviour
     private PlayerMovement playerScript;
     public GameObject scoreManager;
     private ScoreManager scoreScript;
-    public int scoreValue = 1;
+    private int scoreValue = 1;
+    public int ScoreValue
+    {
+        get{return scoreValue;}
+        set{scoreValue = value;}
+    }
     private int initialScoreValue;
     public GameObject comboManager;
     private ComboManager comboScript;
