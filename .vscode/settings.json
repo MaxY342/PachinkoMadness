@@ -56,27 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "PachinkoMadness.sln",
-    "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#000000",
-        "activityBar.background": "#000000",
-        "activityBar.foreground": "#9b001f",
-        "activityBar.inactiveForeground": "#9b001f99",
-        "activityBarBadge.background": "#782828",
-        "activityBarBadge.foreground": "#9b001f",
-        "commandCenter.border": "#9b001f99",
-        "sash.hoverBorder": "#000000",
-        "statusBar.background": "#000000",
-        "statusBar.debuggingBackground": "#000000",
-        "statusBar.debuggingForeground": "#9b001f",
-        "statusBar.foreground": "#9b001f",
-        "statusBarItem.hoverBackground": "#1a1a1a",
-        "statusBarItem.remoteBackground": "#000000",
-        "statusBarItem.remoteForeground": "#9b001f",
-        "titleBar.activeBackground": "#000000",
-        "titleBar.activeForeground": "#9b001f",
-        "titleBar.inactiveBackground": "#00000099",
-        "titleBar.inactiveForeground": "#9b001f99"
-    },
-    "peacock.color": "#000"
+    "dotnet.defaultSolution": "PachinkoMadness.sln"
 }
