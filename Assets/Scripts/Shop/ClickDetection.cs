@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,14 +8,14 @@ public class ClickDetection : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-        }
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
 
-        if(Physics2D.Raycast(ray, out hit))
-        {
-            GameObject clickedObject = hit.collider.gameObject;
-            Debug.Log("Clicked on: " + clickedObject.name);
+            if(hit.collider != null)
+            {
+                GameObject clickedObject = hit.collider.gameObject;
+                Debug.Log("Clicked on: " + clickedObject.name);
+            }
         }
     }
 }

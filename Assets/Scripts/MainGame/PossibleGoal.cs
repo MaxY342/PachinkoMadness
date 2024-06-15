@@ -22,6 +22,7 @@ public class PossibleGoal : MonoBehaviour
     private GoalManager goalScript;
     public GameObject healthManager;
     private HealthManager healthScript;
+    private DeathScreenManager deathScreenManager;
 
     void Start()
     {
@@ -90,6 +91,7 @@ public class PossibleGoal : MonoBehaviour
         {
             Debug.LogError("healthManager not assigned in the Inspector!");
         }
+        deathScreenManager = FindObjectOfType<DeathScreenManager>();
     }
 
     void Update()
@@ -127,7 +129,7 @@ public class PossibleGoal : MonoBehaviour
                 healthScript.RemoveHeart();
                 if (healthScript.DeathCheck())
                 {
-                    SceneManager.LoadScene("DeathScene");
+                    deathScreenManager.ShowDeathScreen();
                 }
                 comboScript.ResetCombo();
                 playerScript.ResetObject();

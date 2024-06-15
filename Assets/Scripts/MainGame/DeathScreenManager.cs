@@ -1,8 +1,8 @@
-using System.Collections
-using UnityEngine
-using UnityEngine.UI
+using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
 
-public class DeathScreenManager : Monobehaviour
+public class DeathScreenManager : MonoBehaviour
 {
     public GameObject deathScreen;
     private float displayTime = 3.0f;
