@@ -5,6 +5,18 @@ using UnityEngine;
 public class HealthManager : MonoBehaviour
 {
     private static List<Transform> children = new List<Transform>();
+    public static HealthManager instance;
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

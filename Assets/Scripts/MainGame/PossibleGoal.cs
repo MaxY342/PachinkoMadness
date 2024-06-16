@@ -6,8 +6,6 @@ public class PossibleGoal : MonoBehaviour
 {
     public GameObject playerObject;
     private PlayerMovement playerScript;
-    public GameObject scoreManager;
-    private ScoreManager scoreScript;
     private int scoreValue = 1;
     public int ScoreValue
     {
@@ -15,18 +13,13 @@ public class PossibleGoal : MonoBehaviour
         set{scoreValue = value;}
     }
     private int initialScoreValue;
-    public GameObject comboManager;
-    private ComboManager comboScript;
     public int comboValue = 1;
-    public GameObject goalManager;
-    private GoalManager goalScript;
-    public GameObject healthManager;
-    private HealthManager healthScript;
     private DeathScreenManager deathScreenManager;
 
     void Start()
     {
         initialScoreValue = scoreValue;
+
         if (playerObject != null)
         {
             playerScript = playerObject.GetComponent<PlayerMovement>();
@@ -40,57 +33,6 @@ public class PossibleGoal : MonoBehaviour
             Debug.LogError("playerObject not assigned in the Inspector!");
         }
 
-        if (scoreManager != null)
-        {
-            scoreScript = scoreManager.GetComponent<ScoreManager>();
-            if (scoreScript == null)
-            {
-                Debug.LogError("ScoreManager script not found on scoreManager object!");
-            }
-        }
-        else
-        {
-            Debug.LogError("scoreManager not assigned in the Inspector!");
-        }
-
-        if (comboManager != null)
-        {
-            comboScript = comboManager.GetComponent<ComboManager>();
-            if (comboScript == null)
-            {
-                Debug.LogError("ComboManager script not found on comboManager object!");
-            }
-        }
-        else
-        {
-            Debug.LogError("comboManager not assigned in the Inspector!");
-        }
-        
-        if (goalManager != null)
-        {
-            goalScript = goalManager.GetComponent<GoalManager>();
-            if (goalScript == null)
-            {
-                Debug.LogError("GoalManager script not found on comboManager object!");
-            }
-        }
-        else
-        {
-            Debug.LogError("goalManager not assigned in the Inspector!");
-        }
-
-        if (healthManager != null)
-        {
-            healthScript = healthManager.GetComponent<HealthManager>();
-            if (healthScript == null)
-            {
-                Debug.LogError("HealthManager Script not found on healthManager object!");
-            }
-        }
-        else
-        {
-            Debug.LogError("healthManager not assigned in the Inspector!");
-        }
         deathScreenManager = FindObjectOfType<DeathScreenManager>();
     }
 
@@ -117,21 +59,21 @@ public class PossibleGoal : MonoBehaviour
         {
             if (GetComponent<SpriteRenderer>().color == Color.white)
             {
-                scoreValue = initialScoreValue + comboScript.Increment();
+                scoreValue = initialScoreValue + ComboManager.instance.Increment();
                 playerScript.ResetObject();
-                scoreScript.AddScore(scoreValue);
-                comboScript.AddCombo(comboValue);
-                goalScript.SelectAndModifyGoals();
+                ScoreManager.instance.AddScore(scoreValue);
+                ComboManager.instance.AddCombo(comboValue);
+                GoalManager.instance.SelectAndModifyGoals();
                 Debug.Log("Win!");
             }
             else if (GetComponent<SpriteRenderer>().color == Color.red)
             {
-                healthScript.RemoveHeart();
-                if (healthScript.DeathCheck())
+                HealthManager.instance.RemoveHeart();
+                if (HealthManager.instance.DeathCheck())
                 {
                     deathScreenManager.ShowDeathScreen();
                 }
-                comboScript.ResetCombo();
+                ComboManager.instance.ResetCombo();
                 playerScript.ResetObject();
                 Debug.Log("Lose!");
             }

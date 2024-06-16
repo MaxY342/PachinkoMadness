@@ -6,8 +6,22 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager instance;
     public TextMeshProUGUI scoreText;
     private int score;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +33,14 @@ public class ScoreManager : MonoBehaviour
     {
         
     }
+
     public void AddScore(int points)
     {
         score += points;
         Debug.Log("Score added: " + points);
         UpdateScoreText();
     }
+    
     private void UpdateScoreText()
     {
         scoreText.text = "Score: " + score;

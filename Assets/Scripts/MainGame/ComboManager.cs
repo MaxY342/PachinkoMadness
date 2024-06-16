@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
@@ -11,9 +12,21 @@ public class ComboManager : MonoBehaviour
     public TextMeshProUGUI comboText;
     public GameObject firePreFab;
     public Transform canvasTransform;
+    public static ComboManager instance;
 
     private int combo;
     private GameObject currentFlame;
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
