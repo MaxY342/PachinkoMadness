@@ -596,11 +596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 1778370770}
-  scoreManager: {fileID: 1875225521}
-  comboManager: {fileID: 1135793264}
   comboValue: 1
-  goalManager: {fileID: 1904302244}
-  healthManager: {fileID: 110238756}
 --- !u!50 &215366420
 Rigidbody2D:
   serializedVersion: 4
@@ -763,11 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 1778370770}
-  scoreManager: {fileID: 1875225521}
-  comboManager: {fileID: 1135793264}
   comboValue: 1
-  goalManager: {fileID: 1904302244}
-  healthManager: {fileID: 110238756}
 --- !u!50 &389312113
 Rigidbody2D:
   serializedVersion: 4
@@ -2134,11 +2126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 1778370770}
-  scoreManager: {fileID: 1875225521}
-  comboManager: {fileID: 1135793264}
   comboValue: 1
-  goalManager: {fileID: 1904302244}
-  healthManager: {fileID: 110238756}
 --- !u!50 &955435808
 Rigidbody2D:
   serializedVersion: 4
@@ -2301,11 +2289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 1778370770}
-  scoreManager: {fileID: 1875225521}
-  comboManager: {fileID: 1135793264}
   comboValue: 1
-  goalManager: {fileID: 1904302244}
-  healthManager: {fileID: 110238756}
 --- !u!50 &1066862081
 Rigidbody2D:
   serializedVersion: 4
@@ -4140,11 +4124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 1778370770}
-  scoreManager: {fileID: 1875225521}
-  comboManager: {fileID: 1135793264}
   comboValue: 1
-  goalManager: {fileID: 1904302244}
-  healthManager: {fileID: 110238756}
 --- !u!50 &1821073188
 Rigidbody2D:
   serializedVersion: 4
@@ -5209,11 +5189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 1778370770}
-  scoreManager: {fileID: 1875225521}
-  comboManager: {fileID: 1135793264}
   comboValue: 1
-  goalManager: {fileID: 1904302244}
-  healthManager: {fileID: 110238756}
 --- !u!50 &2076972713
 Rigidbody2D:
   serializedVersion: 4
