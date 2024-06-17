@@ -6,7 +6,7 @@ public class PossibleGoal : MonoBehaviour
 {
     public GameObject playerObject;
     private PlayerMovement playerScript;
-    private int scoreValue = 1;
+    private int scoreValue = ScoreManager.GetScoreValue();
     public int ScoreValue
     {
         get{return scoreValue;}
