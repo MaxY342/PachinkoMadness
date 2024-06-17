@@ -36,7 +36,7 @@ public class ScoreManager : MonoBehaviour
 
     public void SaveScoreValue(int score)
     {
-        PlayerPrefs.SetInt("scoreValue", 1)
+        PlayerPrefs.SetInt("scoreValue", score)
     }
 
     public int GetScoreValue()
