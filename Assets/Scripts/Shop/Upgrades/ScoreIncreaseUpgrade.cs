@@ -5,13 +5,9 @@ public class ScoreIncreaseUpgrade : MonoBehaviour
 {
 
     private int increaseRate = 1;
-
+    private int currentScoreValue = ScoreManager.instance.GetScoreValue();
     public void IncreaseScore()
     {
-        PossibleGoal[] possibleGoals = FindObjectsOfType<PossibleGoal>();
-        foreach (PossibleGoal goal in possibleGoals)
-        {
-            goal.ScoreValue += increaseRate;
-        }
+        ScoreManager.instance.SaveScoreValue(currentScoreValue + increaseRate);
     }
 }
