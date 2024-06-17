@@ -15,6 +15,14 @@ public class ClickDetection : MonoBehaviour
             {
                 GameObject clickedObject = hit.collider.gameObject;
                 Debug.Log("Clicked on: " + clickedObject.name);
+                if (clickedObject.name == "ScoreIncreaseUpgrade")
+                {
+                    ScoreIncreaseUpgrade scoreIncreaseUpgrade = clickedObject.GetComponent<ScoreIncreaseUpgrade>();
+                    if (scoreIncreaseUpgrade != null)
+                    {
+                        scoreIncreaseUpgrade.IncreaseScore();
+                    }
+                }
             }
         }
     }

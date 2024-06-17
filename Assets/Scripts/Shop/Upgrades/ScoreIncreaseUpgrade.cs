@@ -3,11 +3,15 @@ using UnityEngine.UI;
 
 public class ScoreIncreaseUpgrade : MonoBehaviour
 {
-    public GameObject upgradeCard;
+
     private int increaseRate = 1;
 
-    public void IncreaseScore(PossibleGoal possibleGoal)
+    public void IncreaseScore()
     {
-        possibleGoal.ScoreValue += increaseRate;
+        PossibleGoal[] possibleGoals = FindObjectsOfType<PossibleGoal>();
+        foreach (PossibleGoal goal in possibleGoals)
+        {
+            goal.ScoreValue += increaseRate;
+        }
     }
 }
