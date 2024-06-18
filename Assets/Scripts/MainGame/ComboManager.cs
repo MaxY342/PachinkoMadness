@@ -16,6 +16,8 @@ public class ComboManager : MonoBehaviour
 
     private int combo;
     private GameObject currentFlame;
+    private Coroutine comboResetCoroutine;
+    private float comboDuration = 5f;
     private void Awake()
     {
         if(instance == null)
@@ -45,6 +47,12 @@ public class ComboManager : MonoBehaviour
         Debug.Log("Combo added: " + comboValue);
         UpdateComboText();
         ShowFlame();
+
+        if (comboResetCoroutine != null)
+        {
+            StopCoroutine(comboResetCoroutine);
+        }
+        comboResetCoroutine = StartCoroutine(ComboResetTimer());
     }
 
     private void UpdateComboText()
@@ -93,5 +101,11 @@ public class ComboManager : MonoBehaviour
         {
             currentFlame.SetActive(false);
         }
+    }
+
+    private IEnumerator ComboResetTimer()
+    {
+        yield return new WaitForSeconds(comboDuration);
+        ResetCombo();
     }
 }
