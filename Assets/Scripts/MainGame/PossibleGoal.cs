@@ -7,11 +7,6 @@ public class PossibleGoal : MonoBehaviour
     public GameObject playerObject;
     private PlayerMovement playerScript;
     private int scoreValue = ScoreManager.instance.GetScoreValue();
-    public int ScoreValue
-    {
-        get{return scoreValue;}
-        set{scoreValue = value;}
-    }
     private int initialScoreValue;
     public int comboValue = 1;
     private DeathScreenManager deathScreenManager;
