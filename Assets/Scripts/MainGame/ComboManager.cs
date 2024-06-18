@@ -12,6 +12,7 @@ public class ComboManager : MonoBehaviour
     public TextMeshProUGUI comboText;
     public GameObject firePreFab;
     public Transform canvasTransform;
+    public Slider comboTimerSlider;
     public static ComboManager instance;
 
     private int combo;
@@ -65,6 +66,12 @@ public class ComboManager : MonoBehaviour
         combo = 0;
         UpdateComboText();
         HideFlame();
+        if (comboResetCoroutine != null)
+        {
+            StopCoroutine(comboResetCoroutine);
+            comboResetCoroutine = null;
+        }
+        ResetComboTimerSlider();
     }
 
     public int Increment()
@@ -105,7 +112,25 @@ public class ComboManager : MonoBehaviour
 
     private IEnumerator ComboResetTimer()
     {
-        yield return new WaitForSeconds(comboDuration);
+        float timeRemaining = comboDuration;
+        comboTimerSlider.maxValue = comboDuration;
+        comboTimerSlider.value = comboDuration;
+        
+        while (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            comboTimerSlider.value = timeRemaining;
+            yield return null;
+        }
+        
         ResetCombo();
+    }
+
+    private void ResetComboTimerSlider()
+    {
+        if (comboTimerSlider != null)
+        {
+            comboTimerSlider.value = 0;
+        }
     }
 }
