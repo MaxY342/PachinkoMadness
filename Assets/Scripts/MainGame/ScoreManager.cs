@@ -36,12 +36,12 @@ public class ScoreManager : MonoBehaviour
 
     public void SaveScoreValue(int score)
     {
-        PlayerPrefs.SetInt("scoreValue", score)
+        PlayerPrefs.SetInt("scoreValue", score);
     }
 
     public int GetScoreValue()
     {
-        return PlayerPrefs.GetInt("scoreValue", 0) 
+        return PlayerPrefs.GetInt("scoreValue", 0); 
     }
 
     public void AddScore(int points)
