@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DeathScreenManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class DeathScreenManager : MonoBehaviour
         yield return new WaitForSeconds(displayTime);
 
         deathScreen.SetActive(false);
-        
+
+        SceneManagement.LoadScene("ShopScene");
     }
 }
