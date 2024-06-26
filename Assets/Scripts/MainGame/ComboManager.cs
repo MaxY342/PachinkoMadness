@@ -18,12 +18,13 @@ public class ComboManager : MonoBehaviour
     private int combo;
     private GameObject currentFlame;
     private Coroutine comboResetCoroutine;
-    private float comboDuration = GetComboTimer();
+    private float comboDuration;
     private void Awake()
     {
         if(instance == null)
         {
             instance = this;
+            comboDuration = GetComboTimer();
         }
         else
         {
@@ -141,6 +142,6 @@ public class ComboManager : MonoBehaviour
 
     public float GetComboTimer()
     {
-        PlayerPrefs.GetFloat("ComboTimer", 5f);
+        return PlayerPrefs.GetFloat("ComboTimer", 5f);
     }
 }

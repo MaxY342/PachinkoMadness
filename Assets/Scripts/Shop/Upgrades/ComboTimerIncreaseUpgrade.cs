@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class ComboTimerIncreaseUpgrade : MonoBehaviour
 {
     private float increaseRate = 1.5f;
-    private float currentComboTimer = ComboManager.instance.GetComboTimer();
     public void IncreaseComboTimer()
     {
+        float currentComboTimer = ComboManager.instance.GetComboTimer();
         ComboManager.instance.SetComboTimer(currentComboTimer + increaseRate);
     }
 }
