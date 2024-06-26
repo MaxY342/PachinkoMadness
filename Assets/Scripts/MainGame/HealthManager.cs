@@ -5,6 +5,10 @@ using UnityEngine;
 public class HealthManager : MonoBehaviour
 {
     private static List<Transform> children = new List<Transform>();
+
+    private Transform healthManagerTransform;
+    private int initialHeartCount;
+    public GameObject heartPreFab;
     public static HealthManager instance;
     private void Awake()
     {
@@ -20,7 +24,21 @@ public class HealthManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AddAllHearts();
+        
+        GameObject healthManagerObject = GameObject.Find("HealthManager");
+
+        if (healthManagerObject != null)
+        {
+            healthManagerTransform = healthManagerObject.transform;
+        }
+        else
+        {
+            Debug.LogError("Unable to find HeathManager gameObject.");
+        }
+
+        initialHeartCount = PlayerPrefs.GetInt("HeartCount", 3);
+
+        InitializeHearts();
     }
 
     // Update is called once per frame
@@ -45,40 +63,43 @@ public class HealthManager : MonoBehaviour
 
         if (toBeRemoved != null)
         {
-            toBeRemoved.gameObject.SetActive(false);
+            Destroy(toBeRemoved.gameObject);
             children.Remove(toBeRemoved);
         }
     }
 
-    public void AddAllHearts()
+    public void InitializeHearts()
     {
-        children.Clear();
         foreach (Transform child in transform)
         {
-            children.Add(child);
-            child.gameObject.SetActive(true);
+            Destroy(child.gameObject);
+        }
+        children.Clear();
+
+        for (int i = 0; i < initialHeartCount; i++)
+        {
+            Vector2 position = new Vector2(transform.position.x + i * 10, transform.position.y);
+            GameObject heart = Instantiate(heartPreFab, position, Quaternion.identity);
+            heart.transform.SetParent(healthManagerTransform, true);
+            children.Add(heart.transform);
+        }
+    }
+
+    public void RecoverHeart()
+    {
+        if (children.Count < initialHeartCount)
+        {
+            Vector2 position = new Vector2(transform.position.x + children.Count * 10, transform.position.y);
+            GameObject heart = Instantiate(heartPreFab, position, Quaternion.identity);
+            heart.transform.SetParent(healthManagerTransform, true);
+            children.Add(heart.transform);
         }
     }
 
     public void AddHeart()
     {
-        float distance = float.PositiveInfinity;
-        Transform toBeAdded = null;
-
-        foreach (Transform child in children)
-        {
-            if (child.position.x < distance)
-            {
-                toBeAdded = child;
-                distance = child.position.x;
-            }
-        }
-
-        if (toBeAdded != null)
-        {
-            toBeAdded.gameObject.SetActive(true);
-            children.Add(toBeAdded);
-        }
+        int newHeartCount = PlayerPrefs.GetInt("HeartCount", 3) + 1;
+        PlayerPrefs.SetInt("HeartCount", newHeartCount);
     }
 
     public bool DeathCheck()

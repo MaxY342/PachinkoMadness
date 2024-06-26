@@ -23,6 +23,15 @@ public class ClickDetection : MonoBehaviour
                         scoreIncreaseUpgrade.IncreaseScore();
                     }
                 }
+
+                else if(clickedObject.name == "HeartIncreaseUpgrade")
+                {
+                    HeartIncreaseUpgrade heartIncreaseUpgrade = clickedObject.GetComponent<HeartIncreaseUpgrade>();
+                    if (heartIncreaseUpgrade != null)
+                    {
+                        heartIncreaseUpgrade.IncreaseHeart();
+                    }
+                }
             }
         }
     }
