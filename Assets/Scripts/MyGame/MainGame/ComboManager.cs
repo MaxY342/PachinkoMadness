@@ -6,142 +6,149 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using MyGame
 
-public class ComboManager : MonoBehaviour
+namespace Mygame.MainGame
 {
-    public TextMeshProUGUI comboText;
-    public GameObject firePreFab;
-    public Transform canvasTransform;
-    public Slider comboTimerSlider;
-    public static ComboManager instance;
-
-    private int combo;
-    private GameObject currentFlame;
-    private Coroutine comboResetCoroutine;
-    private float comboDuration;
-    private void Awake()
+    public class ComboManager : MonoBehaviour
     {
-        if(instance == null)
+        public TextMeshProUGUI comboText;
+        public GameObject firePreFab;
+        public Transform canvasTransform;
+        public Slider comboTimerSlider;
+        public static ComboManager instance;
+
+        private int combo;
+        private GameObject currentFlame;
+        private Coroutine comboResetCoroutine;
+        private float comboDuration;
+        private void Awake()
         {
-            instance = this;
-            comboDuration = GetComboTimer();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        ResetCombo();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void AddCombo(int comboValue)
-    {
-        combo += comboValue;
-        Debug.Log("Combo added: " + comboValue);
-        UpdateComboText();
-        ShowFlame();
-
-        if (comboResetCoroutine != null)
-        {
-            StopCoroutine(comboResetCoroutine);
-        }
-        comboResetCoroutine = StartCoroutine(ComboResetTimer());
-    }
-
-    private void UpdateComboText()
-    {
-        comboText.text = "Combo: " + combo + "x";
-    }
-
-    public void ResetCombo()
-    {
-        combo = 0;
-        UpdateComboText();
-        HideFlame();
-        if (comboResetCoroutine != null)
-        {
-            StopCoroutine(comboResetCoroutine);
-            comboResetCoroutine = null;
-        }
-        ResetComboTimerSlider();
-    }
-
-    public int Increment()
-    {
-        int multiplier = 0;
-        float positiveInf = float.PositiveInfinity;
-        for (int i = 0; i < positiveInf; i += 5)
-        {
-            if (combo < i)
+            if(instance == null)
             {
-                multiplier = i - 5;
-                break;
+                instance = this;
+                comboDuration = GetComboTimer();
+            }
+            else
+            {
+                Destroy(gameObject);
             }
         }
-        if (multiplier > 0)
+        // Start is called before the first frame update
+        void Start()
         {
-            multiplier /= 5;
+            ResetCombo();
         }
-        return multiplier;
-    }
 
-    private void ShowFlame()
-    {
-        if (currentFlame == null)
+        // Update is called once per frame
+        void Update()
         {
-            currentFlame = Instantiate(firePreFab, canvasTransform);
+            
         }
-        currentFlame.SetActive(true);
-    }
 
-    private void HideFlame()
-    {
-        if (currentFlame != null)
+        public void AddCombo(int comboValue)
         {
-            currentFlame.SetActive(false);
-        }
-    }
+            combo += comboValue;
+            Debug.Log("Combo added: " + comboValue);
+            UpdateComboText();
+            ShowFlame();
 
-    private IEnumerator ComboResetTimer()
-    {
-        float timeRemaining = comboDuration;
-        comboTimerSlider.maxValue = comboDuration;
-        comboTimerSlider.value = comboDuration;
-        
-        while (timeRemaining > 0)
+            if (comboResetCoroutine != null)
+            {
+                StopCoroutine(comboResetCoroutine);
+            }
+            comboResetCoroutine = StartCoroutine(ComboResetTimer());
+        }
+
+        private void UpdateComboText()
         {
-            timeRemaining -= Time.deltaTime;
-            comboTimerSlider.value = timeRemaining;
-            yield return null;
+            comboText.text = "Combo: " + combo + "x";
         }
-        
-        ResetCombo();
-    }
 
-    private void ResetComboTimerSlider()
-    {
-        if (comboTimerSlider != null)
+        public void ResetCombo()
         {
-            comboTimerSlider.value = 0;
+            combo = 0;
+            UpdateComboText();
+            HideFlame();
+            if (comboResetCoroutine != null)
+            {
+                StopCoroutine(comboResetCoroutine);
+                comboResetCoroutine = null;
+            }
+            ResetComboTimerSlider();
         }
-    }
 
-    public void SetComboTimer(float time)
-    {
-        PlayerPrefs.SetFloat("ComboTimer", time);
-    }
+        public int Increment()
+        {
+            int multiplier = 0;
+            float positiveInf = float.PositiveInfinity;
+            for (int i = 0; i < positiveInf; i += 5)
+            {
+                if (combo < i)
+                {
+                    multiplier = i - 5;
+                    break;
+                }
+            }
+            if (multiplier > 0)
+            {
+                multiplier /= 5;
+            }
+            return multiplier;
+        }
 
-    public float GetComboTimer()
-    {
-        return PlayerPrefs.GetFloat("ComboTimer", 5f);
+        private void ShowFlame()
+        {
+            if (currentFlame == null)
+            {
+                currentFlame = Instantiate(firePreFab, canvasTransform);
+            }
+            currentFlame.SetActive(true);
+        }
+
+        private void HideFlame()
+        {
+            if (currentFlame != null)
+            {
+                currentFlame.SetActive(false);
+            }
+        }
+
+        private IEnumerator ComboResetTimer()
+        {
+            float timeRemaining = comboDuration;
+            comboTimerSlider.maxValue = comboDuration;
+            comboTimerSlider.value = comboDuration;
+            
+            while (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime;
+                comboTimerSlider.value = timeRemaining;
+                yield return null;
+            }
+            
+            ResetCombo();
+        }
+
+        private void ResetComboTimerSlider()
+        {
+            if (comboTimerSlider != null)
+            {
+                comboTimerSlider.value = 0;
+            }
+        }
+
+        public void SetComboTimer(float time)
+        {
+            GameData gameData = SaveSystem.LoadGameData();
+            gameData.comboTimer = time;
+            SaveSystem.SaveGameData(gameData);
+        }
+
+        public float GetComboTimer()
+        {
+            GameData gameData = SaveSystem.LoadGameData();
+            return gameData.comboTimer;
+        }
     }
 }

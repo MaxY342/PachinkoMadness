@@ -3,62 +3,69 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using MyGame
 
-public class ScoreManager : MonoBehaviour
+namespace MyGame.MainGame
 {
-    public static ScoreManager instance;
-    public TextMeshProUGUI scoreText;
-    private int score;
-
-    private void Awake()
+    public class ScoreManager : MonoBehaviour
     {
-        if (instance == null)
+        public static ScoreManager instance;
+        public TextMeshProUGUI scoreText;
+        private int score;
+
+        private void Awake()
         {
-            instance = this;
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
-        else
+
+        // Start is called before the first frame update
+        void Start()
         {
-            Destroy(gameObject);
+            ResetScore();
         }
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        ResetScore();
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        public void SetScoreValue(int score)
+        {
+            GameData gameData = SaveSystem.LoadGameData();
+            gameData.scoreValue = score;
+            SaveSystem.SaveGameData(gameData);
+        }
+
+        public int GetScoreValue()
+        {
+            GameData gameData = SaveSystem.LoadGameData();
+            return gameData.scoreValue;
+        }
+
+        public void AddScore(int points)
+        {
+            score += points;
+            Debug.Log("Score added: " + points);
+            UpdateScoreText();
+        }
         
-    }
+        private void UpdateScoreText()
+        {
+            scoreText.text = "Score: " + score;
+        }
 
-    public void SaveScoreValue(int score)
-    {
-        PlayerPrefs.SetInt("scoreValue", score);
-    }
-
-    public int GetScoreValue()
-    {
-        return PlayerPrefs.GetInt("scoreValue", 0); 
-    }
-
-    public void AddScore(int points)
-    {
-        score += points;
-        Debug.Log("Score added: " + points);
-        UpdateScoreText();
-    }
-    
-    private void UpdateScoreText()
-    {
-        scoreText.text = "Score: " + score;
-    }
-
-    public void ResetScore()
-    {
-        score = 0;
-        UpdateScoreText();
+        public void ResetScore()
+        {
+            score = 0;
+            UpdateScoreText();
+        }
     }
 }

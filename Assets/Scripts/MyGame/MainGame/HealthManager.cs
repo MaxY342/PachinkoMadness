@@ -98,8 +98,9 @@ namespace MyGame.MainGame
 
         public void AddHeart()
         {
-            int newHeartCount = PlayerPrefs.GetInt("HeartCount", 3) + 1;
-            PlayerPrefs.SetInt("HeartCount", newHeartCount);
+            GameData gameData = SaveSystem.LoadGameData();
+            gameData.heartCount++
+            SaveSystem.SaveGameData(gameData);
         }
 
         public bool DeathCheck()

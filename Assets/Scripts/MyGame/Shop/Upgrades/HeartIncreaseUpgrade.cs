@@ -10,7 +10,7 @@ public class HeartIncreaseUpgrade : MonoBehaviour
         if(HealthManager.instance != null)
         {
             HealthManager.instance.AddHeart();
-            Debug.Log("Heart purchased! New heart count: " + PlayerPrefs.GetInt("HeartCount"));
+            Debug.Log("Heart purchased!");
         }
         else
         {

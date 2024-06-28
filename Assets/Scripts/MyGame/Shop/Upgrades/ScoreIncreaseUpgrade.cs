@@ -8,6 +8,6 @@ public class ScoreIncreaseUpgrade : MonoBehaviour
     public void IncreaseScore()
     {
         int currentScoreValue = ScoreManager.instance.GetScoreValue();
-        ScoreManager.instance.SaveScoreValue(currentScoreValue + increaseRate);
+        ScoreManager.instance.SetScoreValue(currentScoreValue + increaseRate);
     }
 }
