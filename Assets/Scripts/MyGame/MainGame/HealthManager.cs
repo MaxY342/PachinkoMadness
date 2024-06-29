@@ -7,9 +7,10 @@ namespace MyGame.MainGame
     public class HealthManager : MonoBehaviour
     {
         private static List<Transform> children = new List<Transform>();
-
         private Transform healthManagerTransform;
         private int initialHeartCount;
+        private GameData gameData;
+
         public GameObject heartPreFab;
         public static HealthManager instance;
         private void Awake()
@@ -38,7 +39,9 @@ namespace MyGame.MainGame
                 Debug.LogError("Unable to find HeathManager gameObject.");
             }
 
-            LoadGameData();
+            gameData = SaveSystem.LoadGameData();
+            initialHeartCount = gameData.heartCount;
+            InitializeHearts();
         }
 
         // Update is called once per frame
@@ -98,21 +101,13 @@ namespace MyGame.MainGame
 
         public void AddHeart()
         {
-            GameData gameData = SaveSystem.LoadGameData();
-            gameData.heartCount++
+            gameData.heartCount++;
             SaveSystem.SaveGameData(gameData);
         }
 
         public bool DeathCheck()
         {
             return children.Count == 0;
-        }
-
-        private void LoadGameData()
-        {
-            GameData gameData = SaveSystem.LoadGameData();
-            initialHeartCount = gameData.heartCount;
-            InitializeHearts();
         }
     }
 }

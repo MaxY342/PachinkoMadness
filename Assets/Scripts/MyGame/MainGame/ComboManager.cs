@@ -6,9 +6,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
-using MyGame
+using MyGame;
 
-namespace Mygame.MainGame
+namespace MyGame.MainGame
 {
     public class ComboManager : MonoBehaviour
     {
@@ -22,12 +22,13 @@ namespace Mygame.MainGame
         private GameObject currentFlame;
         private Coroutine comboResetCoroutine;
         private float comboDuration;
+        private GameData gameData;
+
         private void Awake()
         {
             if(instance == null)
             {
                 instance = this;
-                comboDuration = GetComboTimer();
             }
             else
             {
@@ -37,6 +38,7 @@ namespace Mygame.MainGame
         // Start is called before the first frame update
         void Start()
         {
+            LoadGameData();
             ResetCombo();
         }
 
@@ -127,7 +129,11 @@ namespace Mygame.MainGame
                 yield return null;
             }
             
-            ResetCombo();
+            gameData = SaveSystem.LoadGameData();
+            if (!gameData.falling)
+            {
+                ResetCombo();
+            }
         }
 
         private void ResetComboTimerSlider()
@@ -140,15 +146,19 @@ namespace Mygame.MainGame
 
         public void SetComboTimer(float time)
         {
-            GameData gameData = SaveSystem.LoadGameData();
             gameData.comboTimer = time;
             SaveSystem.SaveGameData(gameData);
         }
 
         public float GetComboTimer()
         {
-            GameData gameData = SaveSystem.LoadGameData();
             return gameData.comboTimer;
+        }
+
+        private void LoadGameData()
+        {
+            gameData = SaveSystem.LoadGameData();
+            comboDuration = GetComboTimer();
         }
     }
 }

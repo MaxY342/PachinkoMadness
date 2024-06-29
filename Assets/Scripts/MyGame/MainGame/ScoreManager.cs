@@ -11,7 +11,9 @@ namespace MyGame.MainGame
     {
         public static ScoreManager instance;
         public TextMeshProUGUI scoreText;
+
         private int score;
+        private GameData gameData;
 
         private void Awake()
         {
@@ -28,6 +30,7 @@ namespace MyGame.MainGame
         // Start is called before the first frame update
         void Start()
         {
+            gameData = SaveSystem.LoadGameData();
             ResetScore();
         }
 
@@ -39,14 +42,12 @@ namespace MyGame.MainGame
 
         public void SetScoreValue(int score)
         {
-            GameData gameData = SaveSystem.LoadGameData();
             gameData.scoreValue = score;
             SaveSystem.SaveGameData(gameData);
         }
 
         public int GetScoreValue()
         {
-            GameData gameData = SaveSystem.LoadGameData();
             return gameData.scoreValue;
         }
 
