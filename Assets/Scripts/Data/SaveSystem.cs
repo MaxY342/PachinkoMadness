@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace MyGame
+namespace PachinkoMadness.Data
 {
     public static class SaveSystem
     {

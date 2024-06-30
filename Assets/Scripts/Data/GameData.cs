@@ -1,4 +1,4 @@
-namespace MyGame
+namespace PachinkoMadness.Data
 {
     [System.Serializable]
     public class GameData

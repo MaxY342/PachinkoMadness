@@ -6,9 +6,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
-using MyGame;
+using PachinkoMadness.Data;
 
-namespace MyGame.MainGame
+namespace PachinkoMadness.MainScene
 {
     public class ComboManager : MonoBehaviour
     {

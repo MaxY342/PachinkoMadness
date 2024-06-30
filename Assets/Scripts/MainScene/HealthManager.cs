@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using MyGame;
+using PachinkoMadness.Data;
 
-namespace MyGame.MainGame
+namespace PachinkoMadness.MainScene
 {
     public class HealthManager : MonoBehaviour
     {

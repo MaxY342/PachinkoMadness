@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using MyGame
+using PachinkoMadness.Data;
 
-namespace MyGame.MainGame
+namespace PachinkoMadness.MainScene
 {
     public class ScoreManager : MonoBehaviour
     {
